@@ -4,7 +4,7 @@
 #
 Name     : xf86driproto
 Version  : 2.1.1
-Release  : 6
+Release  : 7
 URL      : http://xorg.freedesktop.org/releases/individual/proto/xf86driproto-2.1.1.tar.bz2
 Source0  : http://xorg.freedesktop.org/releases/individual/proto/xf86driproto-2.1.1.tar.bz2
 Summary  : XF86DRI extension headers
