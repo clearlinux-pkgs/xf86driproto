@@ -4,7 +4,7 @@
 #
 Name     : xf86driproto
 Version  : 2.1.1
-Release  : 10
+Release  : 11
 URL      : http://xorg.freedesktop.org/releases/individual/proto/xf86driproto-2.1.1.tar.bz2
 Source0  : http://xorg.freedesktop.org/releases/individual/proto/xf86driproto-2.1.1.tar.bz2
 Summary  : XF86DRI extension headers
@@ -20,6 +20,7 @@ the video hardware without requiring data to be passed through the X server.
 %package dev
 Summary: dev components for the xf86driproto package.
 Group: Development
+Provides: xf86driproto-devel
 
 %description dev
 dev components for the xf86driproto package.
@@ -29,10 +30,15 @@ dev components for the xf86driproto package.
 %setup -q -n xf86driproto-2.1.1
 
 %build
+export LANG=C
 %configure --disable-static
-make V=1 %{?_smp_mflags}
+make V=1  %{?_smp_mflags}
 
 %check
+export LANG=C
+export http_proxy=http://127.0.0.1:9/
+export https_proxy=http://127.0.0.1:9/
+export no_proxy=localhost
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
@@ -47,4 +53,4 @@ rm -rf %{buildroot}
 /usr/include/X11/dri/xf86dri.h
 /usr/include/X11/dri/xf86driproto.h
 /usr/include/X11/dri/xf86dristr.h
-/usr/lib64/pkgconfig/*.pc
+/usr/lib64/pkgconfig/xf86driproto.pc
